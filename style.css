@@ -23,6 +23,8 @@ html, body {
 }
 
 body {
+	display: flex;
+	flex-direction: column;
 	color: var(--nord0);
 }
 
@@ -46,6 +48,7 @@ nav ul {
 	list-style: none;
 	display: flex;
 	margin: 0;
+	padding: 0;
 }
 
 nav a {
@@ -80,12 +83,21 @@ h1, .nav-item {
 	font-weight: 300;
 }
 
-
 h1 {
 	margin: 0;
 }
 
 .page-width-limiter {
-	max-width: 80em;
+	max-width: 64em;
 	flex: 1;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+}
+
+img.full-width {
+	width: 100%;
+	image-rendering: crisp-edges;
 }
