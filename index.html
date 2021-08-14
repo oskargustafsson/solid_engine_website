@@ -4,7 +4,8 @@
 	<title>Solid Engine</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Karla&family=Montserrat:wght@300&display=swap"
+		rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 </head>
 
@@ -44,10 +45,66 @@
 				<h2>Intro</h2>
 				<p>
 					Solid Engine is a game and application engine with the ambition of making it as easy as possible to
-					render solid objects, as voxels. The most unique part of the engine is a ray tracing renderer,
-					that completely forgoes the classic rasterization pipeline, in favor of path tracing, which
-					naturally provides many desirable qualities, such as realistic lighting
-					and logarithmic time complexity with respect to scene complexity.
+					render solid objects, quantized as voxels. The most unique part of the engine is a ray tracing
+					renderer, that completely forgoes the classic rasterization pipeline, in favor of path tracing,
+					which naturally provides many desirable qualities, such as realistic lighting and logarithmic time
+					complexity with respect to scene complexity.
+				</p>
+				<p>
+					Other interesting aspects of the engine include
+				</p>
+				<ul>
+					<li>Ray traced UI</li>
+					<li>3D pointer input device</li>
+					<li>Scene diffing</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Current status and roadmap</h2>
+				<p>
+					The engine consists of many parts, of which several are standalone. The different parts are all in
+					different stages of development, and follow separate release plans. The long term goal is to
+					release all parts as open source software.
+				</p>
+				<table class="compact" style="min-width: 12em;">
+					<thead>
+						<tr>
+							<td>Part</td>
+							<td>Status</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Main engine</td>
+							<td>WIP</td>
+						</tr>
+						<tr>
+							<td>Voxel editor</td>
+							<td>Alpha</td>
+						</tr>
+						<tr>
+							<td>Ball pointer</td>
+							<td>Beta</td>
+						</tr>
+						<tr>
+							<td>UI</td>
+							<td>Alpha</td>
+						</tr>
+						<tr>
+							<td>State</td>
+							<td>Beta</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h2>Current limitations</h2>
+				<p>
+				<ul>
+					<li>Works only on Linux</li>
+					<li>Works only on Nvidia graphics cards</li>
+					<li>Scenes limited to 1024 voxels in z-direction</li>
+				</ul>
 				</p>
 			</section>
 		</div>
