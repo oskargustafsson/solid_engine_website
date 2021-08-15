@@ -1,19 +1,27 @@
 use dircpy::copy_dir;
 use handlebars::Handlebars;
+use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 use std::error::Error;
 use std::fs;
 use std::fs::File;
-use std::io::Write;
 use std::path::Path;
 
-const INDEX_TEMPLATE_FILENAME: &str = "index.html";
+const INDEX_TEMPLATE_FILENAME: &str = "index.hbs";
+const NAV_TEMPLATE_FILENAME: &str = "nav.hbs";
 
 struct Page<'a> {
 	title: &'static str,
 	source_dir: &'a Path,
 	target_dir: &'a Path,
 	main_content_file: &'a Path,
+}
+
+#[derive(Serialize, Deserialize)]
+struct MenuItem {
+	text: String,
+	path: String,
+	is_current: bool,
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -42,19 +50,32 @@ fn main() -> Result<(), Box<dyn Error>> {
 		},
 	];
 
-	let index_template_src = fs::read_to_string(source_path.join(INDEX_TEMPLATE_FILENAME))?;
-
 	let mut handlebars = Handlebars::new();
-	handlebars.register_template_string(INDEX_TEMPLATE_FILENAME, index_template_src)?;
 
-	for page in pages {
+	for template_filename in [INDEX_TEMPLATE_FILENAME, NAV_TEMPLATE_FILENAME] {
+		handlebars
+			.register_template_file(template_filename, source_path.join(template_filename))?;
+	}
+
+	for page in &pages {
+		let menu_items: Vec<MenuItem> = pages
+			.iter()
+			.map(|p| MenuItem {
+				text: p.title.into(),
+				path: p.target_dir.to_string_lossy().into(),
+				is_current: p.target_dir == page.target_dir,
+			})
+			.collect();
+		let nav_content = handlebars.render(NAV_TEMPLATE_FILENAME, &menu_items)?;
+
 		let main_content_file_path = source_path
 			.join(page.source_dir)
 			.join(page.main_content_file);
 		let main_content = fs::read_to_string(main_content_file_path)?;
 
 		let mut data = BTreeMap::new();
-		data.insert("main", main_content);
+		data.insert("nav_content", nav_content);
+		data.insert("main_content", main_content);
 		data.insert("title", page.title.into());
 
 		let page_target_path = target_path.join(page.target_dir);
@@ -63,10 +84,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 			fs::create_dir(page_target_path.clone())?;
 		}
 
-		let rendered_page = handlebars.render(INDEX_TEMPLATE_FILENAME, &data)?;
-
-		let mut out_file = File::create(page_target_path.join(INDEX_TEMPLATE_FILENAME))?;
-		out_file.write_all(rendered_page.as_bytes())?;
+		let mut out_file = File::create(page_target_path.join("index.html"))?;
+		handlebars.render_to_write(INDEX_TEMPLATE_FILENAME, &data, &mut out_file)?;
 	}
 
 	Ok(())
