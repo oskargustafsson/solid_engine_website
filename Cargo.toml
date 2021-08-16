@@ -7,3 +7,4 @@ edition = "2018"
 handlebars = "4.1.2"
 dircpy = "0.3.7"
 serde = { version = "1.0.127", features = ["derive"] }
+notify = "4.0.17"

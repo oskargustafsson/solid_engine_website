@@ -1,11 +1,14 @@
 use dircpy::copy_dir;
 use handlebars::Handlebars;
+use notify::{watcher, RecursiveMode::Recursive, Watcher};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 use std::error::Error;
-use std::fs;
 use std::fs::File;
 use std::path::Path;
+use std::sync::mpsc::channel;
+use std::time::Duration;
+use std::{env, fs};
 
 const INDEX_TEMPLATE_FILENAME: &str = "index.hbs";
 const NAV_TEMPLATE_FILENAME: &str = "nav.hbs";
@@ -25,6 +28,34 @@ struct MenuItem {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
+	let args: Vec<String> = env::args().collect();
+
+	if 1 < args.len() && args[1] == "--watch" {
+		let (tx, rx) = channel();
+		let mut watcher = watcher(tx, Duration::from_millis(100))?;
+		watcher.watch("website_src", Recursive)?;
+
+		loop {
+			match rx.recv() {
+				Ok(mut event) => {
+					while let Ok(next_event) = rx.try_recv() {
+						println!("Ignoring event, due to lack of time {:?}", event);
+						event = next_event;
+					}
+					println!("Regenerating because of {:?}", event);
+					generate_website()?;
+				}
+				Err(e) => {
+					return Err(Box::new(e));
+				}
+			}
+		}
+	} else {
+		generate_website()
+	}
+}
+
+fn generate_website() -> Result<(), Box<dyn Error>> {
 	let source_path = Path::new("website_src");
 	let target_path = Path::new("website_target");
 	let res_path = Path::new("res");
