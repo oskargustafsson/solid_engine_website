@@ -1,8 +1,9 @@
-<ul>
-	<li class="nav-item logo">
-		<img src="/res/logo.gif" class="logo">
-		<h1>Solid Engine</h1>
-	</li>
+<div class="logo">
+	<img src="/res/logo.gif">
+	<h1>Solid Engine</h1>
+</div>
+<button class="menu-toggle-button">☰</button>
+<ul class="menu">
 	{{#each this as |menu_item|}}
 	<li class="nav-item{{#if menu_item.is_current}} current{{/if}}">
 		<a href="/{{menu_item.path}}">{{menu_item.text}}</a>
