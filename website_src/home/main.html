@@ -1,21 +1,60 @@
 <img src="/res/example_screenshot.png" class="full-width">
 <section>
-	<h2>Intro</h2>
 	<p>
-		Solid Engine is a game and application engine with the ambition of making it as easy as possible to
-		render solid objects, quantized as voxels. The most unique part of the engine is a ray tracing
-		renderer, that completely forgoes the classic rasterization pipeline, in favor of path tracing,
-		which naturally provides many desirable qualities, such as realistic lighting and logarithmic time
-		complexity with respect to scene complexity.
+		<strong>Solid Engine</strong> is an experimental game engine, that forgoes the classic <a
+			href="https://en.m.wikipedia.org/wiki/Rasterisation#Rasterization_of_3D_images">polygon rasterization</a>
+		graphics pipeline in favor of <a href="https://en.wikipedia.org/wiki/Path_tracing">path tracing</a> <a
+			href="https://en.wikipedia.org/wiki/Voxel">voxels</a>.
+	<p>
+		Representing scenes as solid geometry, quantified as voxels,
+		has several advantages. Most notably, intersection testing is very fast, making high quality light transport and
+		physics simulations possible.
 	</p>
 	<p>
-		Other interesting aspects of the engine include
+		Rendering scenes by means of path tracing has two major advantages.
 	</p>
 	<ul>
+		<li>
+			<em>Realism.</em> By staying true to the rendering equation, light phenomena such as soft shadows, color
+			bleeding and reflections are naturally simulated by the algoritm.
+		</li>
+		<li>
+			<em>Scalability.</em> The best case time complexity of ray tracing derivatives (incl. path tracing) is
+			<code>O(log(n))</code>, where
+			<code>n</code> is number of objects in the scene. This opens the door to having very detailed objects and
+			scenes.
+		</li>
+	</ul>
+	<p>
+		Combining these advantages can produce stunning graphics with a very distinctive aesthetic, informally
+		known as <a href="https://www.google.com/search?q=voxel+art">voxel art</a>. Up until recently, rendering path
+		traced voxel art has been too computation heavy to do in real-time but, advances in consumer graphics cards have
+		now made it possible.
+	</p>
+	<p>
+		<span style="color: var(--nord11);">TL;DR</span> <strong>Solid Engine aims to be the first game engine that can
+			render detailed voxel worlds beautifully, in real-time.</strong>
+	</p>
+</section>
+<section>
+	<h2>Secondary goals</h2>
+	<p>
+		TODO
+	</p>
+	<ul>
+		<li>Simple, modular, Rust code</li>
 		<li>Ray traced UI</li>
 		<li>3D pointer input device</li>
-		<li>Scene diffing</li>
+		<li><a href="https://reactjs.org/">React</a>-inspired <a
+				href="https://reactjs.org/docs/reconciliation.html">declarative rendering</a></li>
+		<li><a href="https://redux.js.org/">Redux</a>-inspired state management</li>
 	</ul>
+</section>
+<section>
+	<h2>Non-goals</h2>
+	<p>
+		TODO
+	</p>
 </section>
 <section>
 	<h2>Current status and roadmap</h2>
@@ -54,14 +93,4 @@
 			</tr>
 		</tbody>
 	</table>
-</section>
-<section>
-	<h2>Current limitations</h2>
-	<p>
-	<ul>
-		<li>Works only on Linux</li>
-		<li>Works only on Nvidia graphics cards</li>
-		<li>Scenes limited to 1024 voxels in z-direction</li>
-	</ul>
-	</p>
 </section>

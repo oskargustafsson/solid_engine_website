@@ -13,6 +13,7 @@ use std::{env, fs};
 const INDEX_TEMPLATE_FILENAME: &str = "index.hbs";
 const NAV_TEMPLATE_FILENAME: &str = "nav.hbs";
 
+#[derive(Debug)]
 struct Page<'a> {
 	title: &'static str,
 	source_dir: &'a Path,
@@ -29,6 +30,8 @@ struct MenuItem {
 
 fn main() -> Result<(), Box<dyn Error>> {
 	let args: Vec<String> = env::args().collect();
+
+	generate_website()?;
 
 	if 1 < args.len() && args[1] == "--watch" {
 		let (tx, rx) = channel();
@@ -50,9 +53,9 @@ fn main() -> Result<(), Box<dyn Error>> {
 				}
 			}
 		}
-	} else {
-		generate_website()
 	}
+
+	Ok(())
 }
 
 fn generate_website() -> Result<(), Box<dyn Error>> {
@@ -66,11 +69,18 @@ fn generate_website() -> Result<(), Box<dyn Error>> {
 	fs::create_dir(target_path)?;
 	copy_dir(source_path.join(res_path), target_path.join(res_path))?;
 
+	// TODO: Store this information in a data file
 	let pages = vec![
 		Page {
 			title: "Home",
 			source_dir: Path::new("home"),
 			target_dir: Path::new(""),
+			main_content_file: Path::new("main.html"),
+		},
+		Page {
+			title: "Engine",
+			source_dir: Path::new("engine"),
+			target_dir: Path::new("engine"),
 			main_content_file: Path::new("main.html"),
 		},
 		Page {

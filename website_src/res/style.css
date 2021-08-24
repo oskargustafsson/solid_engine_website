@@ -88,6 +88,18 @@ body {
 	overflow-x: hidden;
 }
 
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: 700;
+}
+
+code {
+	font-family: monospace;
+}
+
 h1 {
 	font-size: 1.5rem;
 }
@@ -96,6 +108,11 @@ h2 {
 	font-size: 1.25rem;
 	line-height: 1.25rem;
 	box-shadow: 0 1px 0 var(--nord4);
+}
+
+h3 {
+	font-size: 1.125rem;
+	line-height: 1.125rem;
 }
 
 h1, h2, button, .nav-item {
