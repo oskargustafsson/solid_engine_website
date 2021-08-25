@@ -95,38 +95,64 @@
 </section>
 <section>
 	<h2>Current status and roadmap</h2>
-	<p>
-		The engine consists of many parts, of which several are standalone. The different parts are all in
-		different stages of development, and follow separate release plans. The long term goal is to
-		release all parts as open source software.
+	<p>Solid Engine has been developed as a spare-time project of the <a
+			href="https://github.com/oskargustafsson">author</a> since 2015, based on the hypothesis that real-time
+		dynamic global illumination ought to be theoretically possible. Only now, as of 2021, has the engine reached a
+		point where that hypothesis can be considered proven; the engine is capable of rendering an interactive,
+		globally illuminated, voxel world with moving objects at 40 FPS on an Nvidia GTX 1080 graphics card. Render
+		performance is expected to scale linearly with the number of graphics card compute cores, hinting of a bright
+		future.
 	</p>
-	<table class="compact" style="min-width: 12em;">
+	<p>
+		The end goal is to release the entire engine as open source software, but the code is not ready for that just
+		yet - it lacks some basic features that can be expected from a game engine, as well as tests and documentation.
+		On a more positive note, the author has taken a leave of absence for six months, starting September 1 2021, to
+		work full time on this project!
+	</p>
+	<p>
+		The engine consists of many parts and tools, of which several are standalone. The plan is to release some of
+		them individually during the fall of 2021. They can hopefully be of use in other projects, before Solid Engine
+		is released as a whole.
+	</p>
+	<table class="compact" style="min-width: 50%;">
 		<thead>
 			<tr>
 				<td>Part</td>
-				<td>Status</td>
+				<td>Type</td>
+				<td>Release priority</td>
+				<td>Planned release</td>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>Main engine</td>
-				<td>WIP</td>
-			</tr>
-			<tr>
 				<td>Voxel editor</td>
-				<td>Alpha</td>
+				<td>Application</td>
+				<td>High</td>
+				<td>Fall of 2021</td>
 			</tr>
 			<tr>
 				<td>Ball pointer</td>
-				<td>Beta</td>
+				<td>Component</td>
+				<td>High</td>
+				<td>Fall of 2021</td>
+			</tr>
+			<tr>
+				<td>State management</td>
+				<td>Library</td>
+				<td>Medium</td>
+				<td>Fall of 2021</td>
 			</tr>
 			<tr>
 				<td>UI</td>
-				<td>Alpha</td>
+				<td>Library</td>
+				<td>Medium</td>
+				<td>Beginning of 2022</td>
 			</tr>
 			<tr>
-				<td>State</td>
-				<td>Beta</td>
+				<td>Main engine</td>
+				<td>White whale</td>
+				<td>Low</td>
+				<td>First half of 2022</td>
 			</tr>
 		</tbody>
 	</table>
