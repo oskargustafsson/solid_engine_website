@@ -73,8 +73,8 @@ fn generate_website() -> Result<(), Box<dyn Error>> {
 	}
 
 	{
-		let favicon_path = Path::new("favicon");
-		copy_dir(source_path.join(favicon_path), target_path)?;
+		let root_res_path = Path::new("root_res");
+		copy_dir(source_path.join(root_res_path), target_path)?;
 	}
 
 	// TODO: Store this information in a data file
