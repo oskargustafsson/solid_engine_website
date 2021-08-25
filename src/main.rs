@@ -89,6 +89,24 @@ fn generate_website() -> Result<(), Box<dyn Error>> {
 			target_dir: Path::new("voxel-editor"),
 			main_content_file: Path::new("main.html"),
 		},
+		Page {
+			title: "Ball pointer",
+			source_dir: Path::new("ball_pointer"),
+			target_dir: Path::new("ball-pointer"),
+			main_content_file: Path::new("main.html"),
+		},
+		Page {
+			title: "UI",
+			source_dir: Path::new("ui"),
+			target_dir: Path::new("ui"),
+			main_content_file: Path::new("main.html"),
+		},
+		Page {
+			title: "State",
+			source_dir: Path::new("state"),
+			target_dir: Path::new("state"),
+			main_content_file: Path::new("main.html"),
+		},
 	];
 
 	let mut handlebars = Handlebars::new();
