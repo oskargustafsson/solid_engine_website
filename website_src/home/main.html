@@ -28,7 +28,7 @@
 	<p>
 		Combining these advantages can produce stunning graphics with a very distinctive aesthetic, informally
 		known as <a href="https://www.google.com/search?q=voxel+art">voxel art</a>. Up until recently, rendering path
-		traced voxel art has been too computation heavy to do in real-time but, advances in consumer graphics cards have
+		traced voxel art has been too computation heavy to do in real-time, but advances in consumer graphics cards have
 		now made it possible.
 	</p>
 	<p>
@@ -37,23 +37,60 @@
 	</p>
 </section>
 <section>
-	<h2>Secondary goals</h2>
+	<h2>Philosophy, goals and tradeoffs</h2>
 	<p>
-		TODO
+		Most modern game engines try to make game development as straightforward as possible for cross-functional teams,
+		often with the ambitions squeeze extra programming capacity out of semi-technical team members, by means of e.g.
+		"node graphs" (i.e. visual programming) or simple scripting languages. Solid Engine is taking a more
+		uncompromizing route, explicitly catering to small teams, consisting of dedicated programmers and creatives,
+		where the programmers are solely responsible for turning the visions and creations of the creatives into
+		interactive games.
+	</p>
+	<p>
+		This tradeoff allows Solid Engine to simplify large parts of the content creation pipeline, hopefully making
+		both engine and game development faster and more enjoyable. This approach works well for certain game types and
+		teams but decidedly does not scale to AAA game situations, <strong>making Solid Engine an explicit indie game
+			engine</strong>.
+	</p>
+	<p>
+		Under this premise, making game development iteration times short can be achieved by the following.
 	</p>
 	<ul>
-		<li>Simple, modular, Rust code</li>
-		<li>Ray traced UI</li>
-		<li>3D pointer input device</li>
-		<li><a href="https://reactjs.org/">React</a>-inspired <a
-				href="https://reactjs.org/docs/reconciliation.html">declarative rendering</a></li>
-		<li><a href="https://redux.js.org/">Redux</a>-inspired state management</li>
+		<li>
+			All code is written in a single language, <a href="https://www.rust-lang.org/">Rust</a>,
+			making it trivial treating <a href="https://en.wikipedia.org/wiki/Code_as_data">code as data</a>.
+		</li>
+		<li>
+			Content tools can be more specialized, making them more productive.
+		</li>
+		<li>
+			Engine architecture can be more opinionated, allowing e.g.
+			<ul>
+				<li><a href="https://reactjs.org/">React</a>-inspired <a
+						href="https://reactjs.org/docs/reconciliation.html">declarative rendering</a></li>
+				<li><a href="https://redux.js.org/">Redux</a>-inspired state management</li>
+			</ul>
+		</li>
 	</ul>
-</section>
-<section>
-	<h2>Non-goals</h2>
 	<p>
-		TODO
+		Being the experimental game engine that it is, it also contains some fun and novel components.
+	</p>
+	<ul>
+		<li>A path traced UI</li>
+		<li>A 3D pointer input device</li>
+	</ul>
+	<p>
+		These components are of course optional, which brings us to the final goal; <strong>modularity</strong>. Solid
+		Engine is designed as a library rather than a framework, where the game code composes and calls into the engine,
+		rather than the other way around.
+	</p>
+	<p>
+		In general, the philosophy is that the engine focuses on a small subset of games programming (rendering, UI,
+		state management) and does that really well. For the remaining parts (windowing, input, math, audio, physics,
+		ECS), it composes existing best-in-class solutions.
+	</p>
+	<p>
+		<a href="/engine">Read more about the engine</a>.
 	</p>
 </section>
 <section>
