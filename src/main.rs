@@ -61,13 +61,21 @@ fn main() -> Result<(), Box<dyn Error>> {
 fn generate_website() -> Result<(), Box<dyn Error>> {
 	let source_path = Path::new("website_src");
 	let target_path = Path::new("docs"); // Dir name required by GitHub Pages
-	let res_path = Path::new("res");
 
 	if Path::exists(&target_path) {
 		fs::remove_dir_all(target_path)?;
 	}
 	fs::create_dir(target_path)?;
-	copy_dir(source_path.join(res_path), target_path.join(res_path))?;
+
+	{
+		let res_path = Path::new("res");
+		copy_dir(source_path.join(res_path), target_path.join(res_path))?;
+	}
+
+	{
+		let favicon_path = Path::new("favicon");
+		copy_dir(source_path.join(favicon_path), target_path)?;
+	}
 
 	// TODO: Store this information in a data file
 	let pages = vec![
