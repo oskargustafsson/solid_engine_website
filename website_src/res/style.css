@@ -134,7 +134,7 @@ header {
 	display: flex;
 	justify-content: center;
 	background-color: var(--nord5);
-	padding: 0 1rem;
+	padding: 0 2rem;
 }
 
 nav {
@@ -241,7 +241,7 @@ main td {
 	}
 
 	header {
-		padding: 0.5rem 1rem;
+		padding: 0.5rem 2rem;
 	}
 
 	.menu {
