@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Solid Engine - Home</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Karla&family=Montserrat:wght@300;700&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="/res/style.css">
+</head>
+
+<body>
+	<header>
+		<nav class="page-width-limiter">
+			<div class="logo">
+	<img src="/res/logo.gif">
+	<h1>Solid Engine</h1>
+</div>
+<button class="menu-toggle-button">☰</button>
+<ul class="menu">
+	<li class="nav-item current">
+		<a href="/">Home</a>
+	</li>
+	<li class="nav-item">
+		<a href="/engine">Engine</a>
+	</li>
+	<li class="nav-item">
+		<a href="/voxel-editor">Voxel Editor</a>
+	</li>
+	<li class="nav-item">
+		<a href="/ball-pointer">Ball pointer</a>
+	</li>
+	<li class="nav-item">
+		<a href="/ui">UI</a>
+	</li>
+	<li class="nav-item">
+		<a href="/state">State</a>
+	</li>
+</ul>
+
+		</nav>
+	</header>
+	<main>
+		<div class="page-width-limiter">
+			<img src="/res/example_screenshot.png" class="full-width">
+<section>
+	<p>
+		<strong>Solid Engine</strong> is an experimental game engine, that forgoes the classic <a
+			href="https://en.m.wikipedia.org/wiki/Rasterisation#Rasterization_of_3D_images">polygon rasterization</a>
+		graphics pipeline in favor of <a href="https://en.wikipedia.org/wiki/Path_tracing">path tracing</a> <a
+			href="https://en.wikipedia.org/wiki/Voxel">voxels</a>.
+	<p>
+		Representing scenes as solid geometry, quantified as voxels,
+		has several advantages. Most notably, intersection testing is very fast, making high quality light transport and
+		physics simulations possible.
+	</p>
+	<p>
+		Rendering scenes by means of path tracing has two major advantages.
+	</p>
+	<ul>
+		<li>
+			<em>Realism.</em> By staying true to the rendering equation, light phenomena such as soft shadows, color
+			bleeding and reflections are naturally simulated by the algoritm.
+		</li>
+		<li>
+			<em>Scalability.</em> The best case time complexity of ray tracing derivatives (incl. path tracing) is
+			<code>O(log(n))</code>, where
+			<code>n</code> is number of objects in the scene. This opens the door to having very detailed objects and
+			scenes.
+		</li>
+	</ul>
+	<p>
+		Combining these advantages can produce stunning graphics with a very distinctive aesthetic, informally
+		known as <a href="https://www.google.com/search?q=voxel+art">voxel art</a>. Up until recently, rendering path
+		traced voxel art has been too computation heavy to do in real-time, but advances in consumer graphics cards have
+		now made it possible.
+	</p>
+	<p>
+		<span style="color: var(--nord11);">TL;DR</span> <strong>Solid Engine aims to be the first game engine that can
+			render detailed voxel worlds beautifully, in real-time.</strong>
+	</p>
+</section>
+<section>
+	<h2>Philosophy, goals and tradeoffs</h2>
+	<p>
+		Most modern game engines try to make game development as straightforward as possible for cross-functional teams,
+		often with the ambitions squeeze extra programming capacity out of semi-technical team members, by means of e.g.
+		"node graphs" (i.e. visual programming) or simple scripting languages. Solid Engine is taking a more
+		uncompromizing route, explicitly catering to small teams, consisting of dedicated programmers and creatives,
+		where the programmers are solely responsible for turning the visions and creations of the creatives into
+		interactive games.
+	</p>
+	<p>
+		This tradeoff allows Solid Engine to simplify large parts of the content creation pipeline, hopefully making
+		both engine and game development faster and more enjoyable. This approach works well for certain game types and
+		teams but decidedly does not scale to AAA game situations, <strong>making Solid Engine an explicit indie game
+			engine</strong>.
+	</p>
+	<p>
+		Under this premise, making game development iteration times short can be achieved by the following.
+	</p>
+	<ul>
+		<li>
+			All code is written in a single language, <a href="https://www.rust-lang.org/">Rust</a>,
+			making it trivial treating <a href="https://en.wikipedia.org/wiki/Code_as_data">code as data</a>.
+		</li>
+		<li>
+			Content tools can be more specialized, making them more productive.
+		</li>
+		<li>
+			Engine architecture can be more opinionated, allowing e.g.
+			<ul>
+				<li><a href="https://reactjs.org/">React</a>-inspired <a
+						href="https://reactjs.org/docs/reconciliation.html">declarative rendering</a></li>
+				<li><a href="https://redux.js.org/">Redux</a>-inspired state management</li>
+			</ul>
+		</li>
+	</ul>
+	<p>
+		Being the experimental game engine that it is, it also contains some fun and novel components.
+	</p>
+	<ul>
+		<li>A path traced UI</li>
+		<li>A 3D pointer input device</li>
+	</ul>
+	<p>
+		These components are of course optional, which brings us to the final goal; <strong>modularity</strong>. Solid
+		Engine is designed as a library rather than a framework, where the game code composes and calls into the engine,
+		rather than the other way around.
+	</p>
+	<p>
+		In general, the philosophy is that the engine focuses on a small subset of games programming (rendering, UI,
+		state management) and does that really well. For the remaining parts (windowing, input, math, audio, physics,
+		ECS), it composes existing best-in-class solutions.
+	</p>
+	<p>
+		<a href="/engine">Read more about the engine</a>.
+	</p>
+</section>
+<section>
+	<h2>Current status and roadmap</h2>
+	<p>Solid Engine has been developed as a spare-time project of the <a
+			href="https://github.com/oskargustafsson">author</a> since 2015, based on the hypothesis that real-time
+		dynamic global illumination ought to be theoretically possible. Only now, as of 2021, has the engine reached a
+		point where that hypothesis can be considered proven; the engine is capable of rendering an interactive,
+		globally illuminated, voxel world with moving objects at 40 FPS on an Nvidia GTX 1080 graphics card. Render
+		performance is expected to scale linearly with the number of graphics card compute cores, hinting of a bright
+		future.
+	</p>
+	<p>
+		The end goal is to release the entire engine as open source software, but the code is not ready for that just
+		yet - it lacks some basic features that can be expected from a game engine, as well as tests and documentation.
+		On a more positive note, the author has taken a leave of absence for six months, starting September 1 2021, to
+		work full time on this project!
+	</p>
+	<p>
+		The engine consists of many parts and tools, of which several are standalone. The plan is to release some of
+		them individually during the fall of 2021. They can hopefully be of use in other projects, before Solid Engine
+		is released as a whole.
+	</p>
+	<table class="compact" style="min-width: 50%;">
+		<thead>
+			<tr>
+				<td>Part</td>
+				<td>Type</td>
+				<td>Planned release</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Voxel editor</td>
+				<td>Application</td>
+				<td>Fall of 2021</td>
+			</tr>
+			<tr>
+				<td>Ball pointer</td>
+				<td>Component</td>
+				<td>Fall of 2021</td>
+			</tr>
+			<tr>
+				<td>State management</td>
+				<td>Library</td>
+				<td>Fall of 2021</td>
+			</tr>
+			<tr>
+				<td>UI</td>
+				<td>Library</td>
+				<td>Beginning of 2022</td>
+			</tr>
+			<tr>
+				<td>Main engine</td>
+				<td>White whale</td>
+				<td>First half of 2022</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
+		</div>
+	</main>
+</body>
+
+</html>

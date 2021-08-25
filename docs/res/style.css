@@ -1,0 +1,280 @@
+:root {
+	--nord0: #2e3440;
+	--nord1: #3b4252;
+	--nord2: #434c5e;
+	--nord3: #4c566a;
+	--nord4: #d8dee9;
+	--nord5: #e5e9f0;
+	--nord6: #eceff4;
+	--nord7: #8fbcbb;
+	--nord8: #88c0d0;
+	--nord9: #81a1c1;
+	--nord10: #5e81ac;
+	--nord11: #bf616a;
+	--nord12: #d08770;
+	--nord13: #ebcb8b;
+	--nord14: #a3be8c;
+	--nord15: #b48ead;
+}
+
+/* CSS reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* End CSS reset */
+
+html, body {
+	padding: 0;
+	margin: 0;
+	font-size: 16px;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	color: var(--nord0);
+	font-family: 'Karla', sans-serif;
+	font-weight: 400;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: 700;
+}
+
+code {
+	font-family: monospace;
+}
+
+h1 {
+	font-size: 1.5rem;
+}
+
+h2 {
+	font-size: 1.25rem;
+	line-height: 1.25rem;
+	box-shadow: 0 1px 0 var(--nord4);
+}
+
+h3 {
+	font-size: 1.125rem;
+	line-height: 1.125rem;
+}
+
+h1, h2, button, .nav-item {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+a {
+	color: var(--nord10);
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3rem;
+	display: flex;
+	justify-content: center;
+	background-color: var(--nord5);
+	padding: 0 2rem;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+}
+
+nav ul {
+	flex: 1;
+	list-style: none;
+	display: flex;
+}
+
+nav a {
+	text-decoration: none;
+	padding: 1rem 1.5rem;
+}
+
+.nav-item, .logo {
+	display: flex;
+	align-items: center;
+	white-space: nowrap;
+}
+
+.nav-item.current {
+	background-color: var(--nord4);
+	text-shadow: 0 0 var(--nord10);
+}
+
+.nav-item:hover {
+	text-shadow: 0 0 var(--nord10);
+}
+
+.logo {
+	gap: 0.5rem;
+	min-width: 13rem; /* Why is this needed? */
+}
+
+.logo img {
+	width: 2rem;
+	height: auto;
+}
+
+.page-width-limiter {
+	max-width: 64rem;
+	flex: 1;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	overflow: auto;
+	padding: 2rem;
+	margin-top: 3rem;
+	line-height: 1.2;
+}
+
+main .page-width-limiter {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+main ul {
+	list-style-type: disc;
+}
+
+main ul li {
+	margin-left: 1.5rem;
+}
+
+img.full-width {
+	width: 100%;
+	image-rendering: crisp-edges;
+}
+
+thead {
+	background-color: var(--nord4);
+	font-weight: 700;
+	border-bottom: 1px solid var(--nord10);
+}
+
+tr:nth-child(2n) {
+	background-color: var(--nord6);
+}
+
+table.compact {
+	align-self: start;
+}
+
+main td {
+	padding: 0 0.25rem;
+}
+
+
+@media (orientation: landscape) {
+	.menu-toggle-button {
+		display: none;
+	}
+}
+
+@media (orientation: portrait) {
+	nav {
+		justify-content: space-between;
+	}
+
+	.menu {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100vh;
+		transform: translateX(100%);
+		background-color: var(--nord5);
+		flex-direction: column;
+		transition: transform 0.2s;
+	}
+
+	.menu-toggle-button {
+		border: none;
+		margin: 0;
+		padding: 0;
+		width: 2rem;
+		height: 2rem;
+		font-size: 1rem;
+		border-radius: 0.2rem;
+		-webkit-appearance: none;
+		line-height: normal;
+		background-color: var(--nord6);
+		box-shadow: 0px 0.05em 0.1em #00000029, 0px 0.05em 0.5em #0000001c;
+	}
+
+	.menu-toggle-button:focus {
+		background-color: var(--nord4);
+		box-shadow: 0px 0.05em 0.1em #00000029 inset, 0px 0.05em 0.5em #0000001c inset;
+	}
+
+	.menu-toggle-button:focus + .menu {
+		transform: translateX(0%);
+		opacity: 1;
+	}
+}

@@ -60,7 +60,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 fn generate_website() -> Result<(), Box<dyn Error>> {
 	let source_path = Path::new("website_src");
-	let target_path = Path::new("website_target");
+	let target_path = Path::new("docs"); // Dir name required by GitHub Pages
 	let res_path = Path::new("res");
 
 	if Path::exists(&target_path) {
