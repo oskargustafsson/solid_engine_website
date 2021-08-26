@@ -297,3 +297,8 @@ main td {
 		flex-direction: row;
 	}
 }
+
+/* To avoid FOUC */
+html {
+	display: block;
+}
