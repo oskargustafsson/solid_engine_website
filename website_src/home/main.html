@@ -9,17 +9,14 @@
 		graphics pipeline in favor of <a href="https://en.wikipedia.org/wiki/Path_tracing">path tracing</a> <a
 			href="https://en.wikipedia.org/wiki/Voxel">voxels</a>.
 	<p>
-		Representing scenes as solid geometry, quantified as voxels,
-		has several advantages. Most notably, intersection testing is very fast, making high quality light transport and
-		physics simulations possible.
-	</p>
-	<p>
-		Rendering scenes by means of path tracing has two major advantages.
+		Representing scenes as solid geometry, quantified as voxels, has several advantages. Most notably, intersection
+		testing is very fast, making high quality light transport and physics simulations possible. It specifically
+		makes rendering scenes using path tracing possible, which carries two great advantages.
 	</p>
 	<ul>
 		<li>
 			<em>Realism.</em> By staying true to the rendering equation, light phenomena such as soft shadows, color
-			bleeding and reflections are naturally simulated by the algoritm.
+			bleeding and reflections are naturally simulated by the path tracing algoritm.
 		</li>
 		<li>
 			<em>Scalability.</em> The best case time complexity of ray tracing derivatives (incl. path tracing) is
@@ -36,24 +33,25 @@
 	</p>
 	<p>
 		<span style="color: var(--nord11);">TL;DR</span> <strong>Solid Engine aims to be the first game engine that can
-			render detailed voxel worlds beautifully, in real-time.</strong>
+			render detailed interactive voxel worlds beautifully, in real-time.</strong>
 	</p>
 </section>
 <section>
 	<h2>Philosophy, goals and tradeoffs</h2>
 	<p>
-		Most modern game engines try to make game development as straightforward as possible for cross-functional teams,
-		often with the ambitions squeeze extra programming capacity out of semi-technical team members, by means of e.g.
-		"node graphs" (i.e. visual programming) or simple scripting languages. Solid Engine is taking a more
-		uncompromizing route, explicitly catering to small teams, consisting of dedicated programmers and creatives,
-		where the programmers are solely responsible for turning the visions and creations of the creatives into
+		Most modern game engines try to make game development as straightforward as possible for cross-functional teams.
+		Tooling and workflows are optimized for squeezing extra programming capacity out of semi-technical team members,
+		by means of e.g. "node editors" (i.e. visual programming) or simple scripting languages. Solid Engine is taking
+		a more uncompromizing route, explicitly catering to small teams, consisting of dedicated programmers and
+		creatives, where the programmers are solely responsible for turning the art and visions of the creatives into
 		interactive games.
 	</p>
 	<p>
-		This tradeoff allows Solid Engine to simplify large parts of the content creation pipeline, hopefully making
-		both engine and game development faster and more enjoyable. This approach works well for certain game types and
-		teams but decidedly does not scale to AAA game situations, <strong>making Solid Engine an explicit indie game
-			engine</strong>.
+		Combined with voxels and path tracing (which require no light maps, normal maps, height maps, LOD, ...), this
+		tradeoff allows Solid Engine to simplify large parts of the content creation pipeline. The ambition is to make
+		it as fun and easy to create a 3D "voxel art" game, as it is to create a 2D "pixel art" game. This approach
+		should work well for certain game types and teams but decidedly does not scale to AAA game situations,
+		<strong>making Solid Engine an explicit indie game engine</strong>.
 	</p>
 	<p>
 		Under this premise, making game development iteration times short can be achieved by the following.
