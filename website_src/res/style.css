@@ -243,6 +243,14 @@ main td {
 		justify-content: space-between;
 	}
 
+	header {
+		padding: 0 1rem;
+	}
+
+	main {
+		padding: 1rem;
+	}
+
 	.menu {
 		position: absolute;
 		top: 0;
