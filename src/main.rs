@@ -92,9 +92,9 @@ fn generate_website() -> Result<(), Box<dyn Error>> {
 			main_content_file: Path::new("main.html"),
 		},
 		Page {
-			title: "Voxel Editor",
-			source_dir: Path::new("voxel_editor"),
-			target_dir: Path::new("voxel-editor"),
+			title: "Solid Editor",
+			source_dir: Path::new("solid_editor"),
+			target_dir: Path::new("solid-editor"),
 			main_content_file: Path::new("main.html"),
 		},
 		Page {
