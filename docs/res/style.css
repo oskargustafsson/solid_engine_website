@@ -184,12 +184,10 @@ nav a {
 	transition: transform 0.2s;
 }
 
-.menu-toggle-button {
+.push-button {
 	border: none;
 	margin: 0;
 	padding: 0;
-	width: 2rem;
-	height: 2rem;
 	font-size: 1rem;
 	border-radius: 0.2rem;
 	-webkit-appearance: none;
@@ -198,15 +196,36 @@ nav a {
 	box-shadow: 0px 0.05em 0.1em #00000029, 0px 0.05em 0.5em #0000001c;
 }
 
-.menu-toggle-button:focus {
+.push-button:focus {
 	background-color: var(--nord4);
 	box-shadow: 0px 0.05em 0.1em #00000029 inset, 0px 0.05em 0.5em #0000001c inset;
 }
 
-.menu-toggle-button:focus + .menu {
+.push-button:focus + .menu {
 	transform: translateX(0%);
 	opacity: 1;
 }
+
+.menu-toggle-button {
+	width: 2rem;
+	height: 2rem;
+}
+
+.download-button {
+	display: inline-block;
+	padding: 0.6rem 1.2rem;
+	margin: 0.5rem 0.5rem 0 0;
+	background-color: var(--nord14);
+	color: white;
+	font-weight: 700;
+	font-size: 1.1rem;
+	text-decoration: none;
+}
+
+.download-button:focus {
+	background-color: var(--nord14);
+}
+
 
 .logo {
 	gap: 0.5rem;
