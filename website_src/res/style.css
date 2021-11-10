@@ -230,7 +230,7 @@ main {
 	overflow: auto;
 	padding: 1rem;
 	margin-top: 3rem;
-	line-height: 1.2;
+	line-height: 1.4;
 }
 
 main .page-width-limiter {
@@ -245,6 +245,15 @@ main ul {
 
 main ul li {
 	margin-left: 1.5rem;
+}
+
+main ul li {
+	margin-top: 0.4em;
+}
+
+main ul li:first-child,
+main ul li ul li {
+	margin-top: 0;
 }
 
 picture.full-width img {
