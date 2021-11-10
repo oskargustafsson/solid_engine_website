@@ -115,6 +115,12 @@ fn generate_website() -> Result<(), Box<dyn Error>> {
 			target_dir: Path::new("state"),
 			main_content_file: Path::new("main.html"),
 		},
+		Page {
+			title: "Contact",
+			source_dir: Path::new("contact"),
+			target_dir: Path::new("contact"),
+			main_content_file: Path::new("main.html"),
+		},
 	];
 
 	let mut handlebars = Handlebars::new();
