@@ -19,19 +19,87 @@
 
 /* CSS reset */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -41,8 +109,17 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
 
@@ -50,16 +127,20 @@ body {
 	line-height: 1;
 }
 
-ol, ul {
+ol,
+ul {
 	list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
 	quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
@@ -71,7 +152,8 @@ table {
 
 /* End CSS reset */
 
-html, body {
+html,
+body {
 	padding: 0;
 	margin: 0;
 	font-size: 16px;
@@ -112,7 +194,10 @@ h3 {
 	line-height: 1.125rem;
 }
 
-h1, h2, button, .nav-item {
+h1,
+h2,
+button,
+.nav-item {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
 }
@@ -158,7 +243,8 @@ nav a {
 	padding: 1rem 1.5rem;
 }
 
-.nav-item, .logo {
+.nav-item,
+.logo {
 	display: flex;
 	align-items: center;
 	white-space: nowrap;
@@ -201,7 +287,7 @@ nav a {
 	box-shadow: 0px 0.05em 0.1em #00000029 inset, 0px 0.05em 0.5em #0000001c inset;
 }
 
-.push-button:focus + .menu {
+.push-button:focus+.menu {
 	transform: translateX(0%);
 	opacity: 1;
 }
@@ -229,7 +315,8 @@ nav a {
 
 .logo {
 	gap: 0.5rem;
-	min-width: 13rem; /* Why is this needed? */
+	min-width: 13rem;
+	/* Why is this needed? */
 }
 
 .logo img {
@@ -279,6 +366,22 @@ picture.full-width img {
 	width: 100%;
 	height: auto;
 	image-rendering: crisp-edges;
+}
+
+.video-player-wrapper {
+	position: relative;
+	overflow: hidden;
+	height: 0;
+	padding-bottom: 56.25%;
+}
+
+.video-player {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
 }
 
 thead {
